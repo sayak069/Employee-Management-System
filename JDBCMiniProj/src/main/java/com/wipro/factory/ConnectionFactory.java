@@ -8,7 +8,7 @@ public class ConnectionFactory {
 	private static Connection con=null;
 	static {
 		try {
-			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "admin100");
+			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "tiger");
 		}catch(SQLException se) {
 			se.printStackTrace();
 		}

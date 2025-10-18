@@ -20,7 +20,7 @@ public class EmployeeTest {
 			double esal = 0.0;
 
 			while (true) {
-				System.out.println("======================");
+				System.out.println("\n======================");
 				System.out.println("1. insert employee");
 				System.out.println("2. search employee");
 				System.out.println("3. update employee");
@@ -31,6 +31,7 @@ public class EmployeeTest {
 				choice = sc.nextInt();
 
 				switch (choice) {
+				
 				case 1:
 					System.out.println("====employee add module====");
 					System.out.print("enter eno: ");
@@ -51,6 +52,7 @@ public class EmployeeTest {
 					status = empService.addEmployee(emp);
 					System.out.println(status);
 					break;
+					
 				case 2:
 					System.out.println("====employee search module====");
 					System.out.print("enter eno: ");
@@ -66,14 +68,42 @@ public class EmployeeTest {
 						System.out.println("eaddr= "+e1.getEaddr());
 					}
 					break;
+					
 				case 3:
+					System.out.println("====employee update module====");
+					System.out.print("enter eno: ");
+					eno = sc.nextInt();
+					System.out.print("enter ename: ");
+					ename = sc.next();
+					System.out.print("enter esal: ");
+					esal = sc.nextDouble();
+					System.out.print("enter eaddr: ");
+					eaddr = sc.next();
+					
+					emp.setEno(eno);
+					emp.setEname(ename);
+					emp.setEsal(esal);
+					emp.setEaddr(eaddr);
+					
+					empService = EmployeeServiceFactory.getEmployeeService();
+					status = empService.updateEmployee(emp);
+					System.out.println(status);
 					break;
+					
 				case 4:
+					System.out.println("====employee delete module====");
+					System.out.print("enter eno: ");
+					eno = sc.nextInt();
+					empService = EmployeeServiceFactory.getEmployeeService();
+					status = empService.deleteEmployee(eno);
+					System.out.println(status);
 					break;
+					
 				case 5:
 					System.out.println("bye");
 					System.exit(0);
 					break;
+					
 				default:
 					System.out.println("wrong choice");
 				}// end of switch

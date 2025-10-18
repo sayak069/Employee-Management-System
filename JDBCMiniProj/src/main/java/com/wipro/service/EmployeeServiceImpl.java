@@ -20,14 +20,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Override
 	public String updateEmployee(Employee e) {
-		// TODO Auto-generated method stub
-		return null;
+		IEmployeeDao empDao = EmployeeDaoFactory.getEmployeeDao();
+		return empDao.update(e);
 	}
 
 	@Override
 	public String deleteEmployee(Integer eno) {
-		// TODO Auto-generated method stub
-		return null;
+		IEmployeeDao empDao = EmployeeDaoFactory.getEmployeeDao();
+		return empDao.delete(eno);
 	}
 
 }
