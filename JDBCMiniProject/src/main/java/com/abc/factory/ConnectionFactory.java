@@ -1,14 +1,18 @@
 package com.abc.factory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import oracle.jdbc.datasource.impl.OracleDataSource;
 
 public class ConnectionFactory {
 	private static Connection con=null;
 	static {
 		try {
-			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "tiger");
+			OracleDataSource ds = new OracleDataSource();
+			ds.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+			ds.setUser("system");
+			ds.setPassword("tiger");
+			con = ds.getConnection();
 		}catch(SQLException se) {
 			se.printStackTrace();
 		}
